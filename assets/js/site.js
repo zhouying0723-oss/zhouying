@@ -84,6 +84,7 @@ document.querySelectorAll(".desktop-project").forEach((project) => {
     const top = bounds.top - gridBounds.top
 
     project.style.animation = "none"
+    project.style.opacity = "1"
     project.style.left = `${left}px`
     project.style.top = `${top}px`
     project.style.transform = "none"

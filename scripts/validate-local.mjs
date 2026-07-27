@@ -97,12 +97,18 @@ for (const route of routes) {
       )
       await page.mouse.up()
       const afterDrag = await draggableProject.boundingBox()
+      const opacityAfterDrag = await draggableProject.evaluate(
+        (project) => getComputedStyle(project).opacity,
+      )
       if (
         !afterDrag ||
         Math.abs(afterDrag.x - beforeDrag.x) < 80 ||
         Math.abs(afterDrag.y - beforeDrag.y) < 40
       ) {
         failures.push("/: 作品图标拖动后位置没有改变")
+      }
+      if (Number(opacityAfterDrag) < 0.99) {
+        failures.push("/: 作品图标拖动后变为不可见")
       }
       if (new URL(page.url()).pathname !== "/") {
         failures.push("/: 拖动作品图标时意外打开了详情页")

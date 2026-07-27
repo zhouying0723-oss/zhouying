@@ -104,6 +104,7 @@ button {
 .desktop-project.is-dragging {
   cursor: grabbing;
   filter: drop-shadow(0 14px 28px rgb(0 0 0 / 0.55));
+  opacity: 1;
   transition: none;
   z-index: 20;
 }
