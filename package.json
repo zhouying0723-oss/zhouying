@@ -4,7 +4,9 @@
   "private": true,
   "description": "Framer 站点的可自托管静态版本",
   "scripts": {
-    "analyze": "node scripts/analyze-site.mjs"
+    "analyze": "node scripts/analyze-site.mjs",
+    "build": "node scripts/build-static.mjs",
+    "download-assets": "node scripts/download-assets.mjs"
   },
   "devDependencies": {
     "playwright-core": "^1.55.0"

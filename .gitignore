@@ -3,10 +3,14 @@ node_modules/
 .playwright/
 analysis/chrome-profile/
 analysis/*.log
+analysis/*-analysis.json
+analysis/*-console.json
+analysis/*-network.json
+analysis/*-rendered.html
+analysis/*.png
 analysis/console.json
-analysis/homepage.png
 analysis/network-responses.json
-analysis/rendered.html
 analysis/response-headers.txt
+analysis/rendered.html
 analysis/site-analysis.json
 analysis/source.html

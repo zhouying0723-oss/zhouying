@@ -3,6 +3,10 @@ import { mkdir, writeFile } from "node:fs/promises"
 
 const targetURL =
   process.env.TARGET_URL ?? "https://jubilant-library-370712.framer.app/"
+const outputName = (process.env.OUTPUT_NAME ?? "homepage").replace(
+  /[^a-z0-9-]/gi,
+  "-",
+)
 const outputDirectory = new URL("../analysis/", import.meta.url)
 const chromePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
@@ -86,6 +90,14 @@ const analysis = await page.evaluate((origin) => {
       height: image.naturalHeight,
       alt: image.alt,
     })),
+    backgroundImages: [...document.querySelectorAll("*")]
+      .map((element) => getComputedStyle(element).backgroundImage)
+      .filter((value) => value && value !== "none")
+      .filter((value, index, values) => values.indexOf(value) === index),
+    videos: [...document.querySelectorAll("video")].map((video) => ({
+      src: video.currentSrc || video.src,
+      poster: video.poster,
+    })),
     scripts: [...document.scripts].map((script) => absolute(script.src)).filter(Boolean),
     stylesheets: [...document.querySelectorAll('link[rel="stylesheet"]')].map(
       (link) => absolute(link.href),
@@ -94,21 +106,24 @@ const analysis = await page.evaluate((origin) => {
   }
 }, new URL(targetURL).origin)
 
-await writeFile(new URL("rendered.html", outputDirectory), await page.content())
 await writeFile(
-  new URL("site-analysis.json", outputDirectory),
+  new URL(`${outputName}-rendered.html`, outputDirectory),
+  await page.content(),
+)
+await writeFile(
+  new URL(`${outputName}-analysis.json`, outputDirectory),
   JSON.stringify(analysis, null, 2),
 )
 await writeFile(
-  new URL("network-responses.json", outputDirectory),
+  new URL(`${outputName}-network.json`, outputDirectory),
   JSON.stringify([...responses.values()], null, 2),
 )
 await writeFile(
-  new URL("console.json", outputDirectory),
+  new URL(`${outputName}-console.json`, outputDirectory),
   JSON.stringify({ consoleMessages, failedRequests }, null, 2),
 )
 await page.screenshot({
-  path: new URL("homepage.png", outputDirectory).pathname,
+  path: new URL(`${outputName}.png`, outputDirectory).pathname,
   fullPage: true,
 })
 
