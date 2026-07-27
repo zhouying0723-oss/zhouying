@@ -153,7 +153,7 @@ ${dockIcon({
   label: "About Me",
   attributes: 'data-open-window="about"',
   content:
-    '<img src="assets/images/kDcQjTOqVphBNghgFUi9K754s.jpg" alt="">',
+    '<img src="assets/images/about-me.jpg" alt="">',
 })}
 ${dockIcon({
   label: "Notes",
