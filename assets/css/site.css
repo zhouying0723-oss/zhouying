@@ -88,6 +88,8 @@ button {
   width: 150px;
   animation: icon-in 550ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: var(--delay);
+  cursor: grab;
+  user-select: none;
 }
 
 .desktop-project:hover,
@@ -95,6 +97,13 @@ button {
   filter: drop-shadow(0 10px 22px rgb(0 0 0 / 0.45));
   transform: translate(-50%, -5px) scale(1.05);
   outline: none;
+}
+
+.desktop-project.is-dragging {
+  cursor: grabbing;
+  filter: drop-shadow(0 14px 28px rgb(0 0 0 / 0.55));
+  transition: none;
+  z-index: 20;
 }
 
 .desktop-project img {
@@ -477,6 +486,7 @@ button {
 
   .desktop-project {
     animation-name: mobile-icon-in;
+    cursor: pointer;
     left: auto;
     position: relative;
     top: auto;

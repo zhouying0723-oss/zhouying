@@ -64,6 +64,41 @@ for (const route of routes) {
   }
 
   if (route === "/") {
+    const draggableProject = page.locator(".desktop-project").first()
+    const beforeDrag = await draggableProject.boundingBox()
+    if (!beforeDrag) {
+      failures.push("/: 找不到可拖动的作品图标")
+    } else {
+      await page.mouse.move(
+        beforeDrag.x + beforeDrag.width / 2,
+        beforeDrag.y + beforeDrag.height / 2,
+      )
+      await page.mouse.down()
+      await page.mouse.move(
+        beforeDrag.x + beforeDrag.width / 2 + 100,
+        beforeDrag.y + beforeDrag.height / 2 + 60,
+        { steps: 6 },
+      )
+      await page.mouse.up()
+      const afterDrag = await draggableProject.boundingBox()
+      if (
+        !afterDrag ||
+        Math.abs(afterDrag.x - beforeDrag.x) < 80 ||
+        Math.abs(afterDrag.y - beforeDrag.y) < 40
+      ) {
+        failures.push("/: 作品图标拖动后位置没有改变")
+      }
+      if (new URL(page.url()).pathname !== "/") {
+        failures.push("/: 拖动作品图标时意外打开了详情页")
+      }
+    }
+
+    await page.locator(".desktop-project").nth(1).click()
+    if (!new URL(page.url()).pathname.startsWith("/works/")) {
+      failures.push("/: 轻点作品图标没有进入详情页")
+    }
+    await page.goBack({ waitUntil: "networkidle" })
+
     await page.locator('[data-open-window="about"]').click()
     if (!(await page.locator('[data-window="about"]').isVisible())) {
       failures.push("/: About 窗口没有打开")

@@ -60,6 +60,89 @@ document.querySelectorAll(".window").forEach((windowElement) => {
   })
 })
 
+const desktopDragMedia = window.matchMedia(
+  "(min-width: 721px) and (pointer: fine)",
+)
+
+document.querySelectorAll(".desktop-project").forEach((project) => {
+  let dragState = null
+  let suppressNextClick = false
+
+  project.addEventListener("pointerdown", (event) => {
+    if (!desktopDragMedia.matches || event.button !== 0) return
+
+    const grid = project.closest(".project-grid")
+    if (!grid) return
+
+    const bounds = project.getBoundingClientRect()
+    const gridBounds = grid.getBoundingClientRect()
+    const left = bounds.left - gridBounds.left
+    const top = bounds.top - gridBounds.top
+
+    project.style.animation = "none"
+    project.style.left = `${left}px`
+    project.style.top = `${top}px`
+    project.style.transform = "none"
+    project.classList.add("is-dragging")
+    project.setPointerCapture(event.pointerId)
+
+    dragState = {
+      grid,
+      offsetX: event.clientX - bounds.left,
+      offsetY: event.clientY - bounds.top,
+      startX: event.clientX,
+      startY: event.clientY,
+      moved: false,
+    }
+    event.preventDefault()
+  })
+
+  project.addEventListener("pointermove", (event) => {
+    if (!dragState) return
+
+    const gridBounds = dragState.grid.getBoundingClientRect()
+    const projectBounds = project.getBoundingClientRect()
+    const nextLeft = Math.min(
+      Math.max(event.clientX - gridBounds.left - dragState.offsetX, 0),
+      gridBounds.width - projectBounds.width,
+    )
+    const nextTop = Math.min(
+      Math.max(event.clientY - gridBounds.top - dragState.offsetY, 0),
+      gridBounds.height - projectBounds.height,
+    )
+
+    if (
+      Math.hypot(
+        event.clientX - dragState.startX,
+        event.clientY - dragState.startY,
+      ) > 5
+    ) {
+      dragState.moved = true
+    }
+
+    project.style.left = `${nextLeft}px`
+    project.style.top = `${nextTop}px`
+  })
+
+  const finishDrag = (event) => {
+    if (!dragState) return
+    suppressNextClick = dragState.moved
+    dragState = null
+    project.classList.remove("is-dragging")
+    if (project.hasPointerCapture(event.pointerId)) {
+      project.releasePointerCapture(event.pointerId)
+    }
+  }
+
+  project.addEventListener("pointerup", finishDrag)
+  project.addEventListener("pointercancel", finishDrag)
+  project.addEventListener("click", (event) => {
+    if (!suppressNextClick) return
+    event.preventDefault()
+    suppressNextClick = false
+  })
+})
+
 const revealObserver = new IntersectionObserver(
   (entries) => {
     for (const entry of entries) {
