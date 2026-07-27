@@ -65,6 +65,22 @@ for (const route of routes) {
 
   if (route === "/") {
     const draggableProject = page.locator(".desktop-project").first()
+    const nativeDragPrevented = await draggableProject.evaluate((project) => {
+      const image = project.querySelector("img")
+      const event = new DragEvent("dragstart", {
+        bubbles: true,
+        cancelable: true,
+      })
+      project.dispatchEvent(event)
+      return (
+        event.defaultPrevented &&
+        project.draggable === false &&
+        image?.draggable === false
+      )
+    })
+    if (!nativeDragPrevented) {
+      failures.push("/: 作品图标仍可能触发浏览器原生图片拖动")
+    }
     const beforeDrag = await draggableProject.boundingBox()
     if (!beforeDrag) {
       failures.push("/: 找不到可拖动的作品图标")

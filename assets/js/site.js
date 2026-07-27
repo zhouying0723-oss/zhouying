@@ -60,13 +60,17 @@ document.querySelectorAll(".window").forEach((windowElement) => {
   })
 })
 
-const desktopDragMedia = window.matchMedia(
-  "(min-width: 721px) and (pointer: fine)",
-)
+const desktopDragMedia = window.matchMedia("(min-width: 721px)")
 
 document.querySelectorAll(".desktop-project").forEach((project) => {
   let dragState = null
   let suppressNextClick = false
+
+  project.draggable = false
+  project.querySelectorAll("img").forEach((image) => {
+    image.draggable = false
+  })
+  project.addEventListener("dragstart", (event) => event.preventDefault())
 
   project.addEventListener("pointerdown", (event) => {
     if (!desktopDragMedia.matches || event.button !== 0) return
