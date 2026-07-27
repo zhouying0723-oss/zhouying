@@ -1,7 +1,118 @@
 # Personal Website
 
-目标：将 Framer 站点转换为可以部署到自有静态服务器的本地网站。
+这是从 Framer 作品集重建的可自托管静态网站。首页、6 个作品详情页、图片、字体、
+CSS 和 JavaScript 均已保存到本地，不依赖 Framer 编辑器、统计、发布平台或
+`framerusercontent.com` 运行时资源。
 
-当前阶段：页面结构与资源分析。
+## 页面
 
-后续将补充本地预览、Nginx 部署和已知限制说明。
+- `/`
+- `/works/champ-silencieux/`
+- `/works/elan-brut/`
+- `/works/la-ou-dort-l-eau/`
+- `/works/les-silences-miroirs/`
+- `/works/lisiere/`
+- `/works/revolte-douce/`
+
+原站中发现的 6 个内部页面均已下载并转换，没有暂时无法下载的内部页面。
+
+## 本地预览
+
+进入项目目录：
+
+```bash
+cd ~/Desktop/personal-website
+python3 -m http.server 8000
+```
+
+浏览器打开：
+
+```text
+http://127.0.0.1:8000/
+```
+
+停止服务器时，在运行服务器的终端按 `Control + C`。
+
+## 重新生成与检查
+
+安装分析工具：
+
+```bash
+npm install
+```
+
+从已有本地素材重新生成静态页面：
+
+```bash
+npm run build
+```
+
+静态服务器运行期间执行自动验收：
+
+```bash
+npm run validate
+```
+
+验收覆盖首页、全部作品页、资源加载、控制台错误、Framer 请求、桌面窗口交互和移动端
+横向溢出。
+
+`npm run download-assets` 会依据 `analysis/` 中的动态抓取结果重新下载素材，需要联网；
+日常修改和部署不需要执行。
+
+## 上传到 Nginx
+
+将以下内容完整上传到服务器站点目录，例如 `/var/www/personal-website`：
+
+```text
+index.html
+assets/
+works/
+```
+
+Nginx 站点配置示例：
+
+```nginx
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com www.example.com;
+
+    root /var/www/personal-website;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ $uri/index.html =404;
+    }
+
+    location ~* \.(?:css|js|png|jpg|jpeg|svg|webp|woff2)$ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+}
+```
+
+检查并重新加载 Nginx：
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+生产环境建议再配置 HTTPS，例如使用 Certbot 申请 Let's Encrypt 证书。
+
+## 目录说明
+
+```text
+assets/       本地图片、字体、CSS、JavaScript 和来源清单
+works/        6 个本地作品详情页
+scripts/      动态分析、资源下载、静态生成和自动验收工具
+analysis/     人工分析报告；原始抓取和截图由脚本生成但不提交
+index.html    静态首页
+```
+
+## 已知差异
+
+- Framer 的 React/Motion 运行时已移除，原有动效由轻量原生 CSS/JavaScript 重建。
+- 社交链接仍使用原模板中的 Instagram、X 和 Behance 通用地址，部署前应替换为真实账号。
+- 原站可能随发布而变化；本仓库保留的是抓取和重建时的版本。

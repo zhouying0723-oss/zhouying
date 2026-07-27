@@ -120,6 +120,18 @@ button {
   }
 }
 
+@keyframes mobile-icon-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .dock {
   align-items: flex-end;
   backdrop-filter: blur(22px) saturate(150%);
@@ -448,10 +460,17 @@ button {
   }
 
   .desktop-project {
+    animation-name: mobile-icon-in;
     left: auto;
     position: relative;
     top: auto;
+    transform: translateY(14px);
     width: auto;
+  }
+
+  .desktop-project:hover,
+  .desktop-project:focus-visible {
+    transform: translateY(-5px) scale(1.05);
   }
 
   .desktop-project img {

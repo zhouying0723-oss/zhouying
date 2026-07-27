@@ -6,7 +6,8 @@
   "scripts": {
     "analyze": "node scripts/analyze-site.mjs",
     "build": "node scripts/build-static.mjs",
-    "download-assets": "node scripts/download-assets.mjs"
+    "download-assets": "node scripts/download-assets.mjs",
+    "validate": "node scripts/validate-local.mjs"
   },
   "devDependencies": {
     "playwright-core": "^1.55.0"
