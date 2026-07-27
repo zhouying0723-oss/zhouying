@@ -101,6 +101,17 @@ sudo systemctl reload nginx
 
 生产环境建议再配置 HTTPS，例如使用 Certbot 申请 Let's Encrypt 证书。
 
+### zhouying.cn
+
+本仓库包含与当前 ECS 环境匹配的两阶段配置：
+
+- `deploy/zhouying.cn.http.conf`：首次签发证书前的 HTTP 配置。
+- `deploy/zhouying.cn.conf`：证书签发后的正式 HTTPS 配置。
+
+正式站点目录为 `/var/www/zhouying.cn`，Nginx 配置目标为
+`/etc/nginx/conf.d/zhouying.cn.conf`。证书路径为
+`/etc/letsencrypt/live/zhouying.cn/`。
+
 ## 目录说明
 
 ```text
