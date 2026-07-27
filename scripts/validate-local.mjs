@@ -68,6 +68,34 @@ for (const route of routes) {
     if (!(await page.locator('[data-window="about"]').isVisible())) {
       failures.push("/: About 窗口没有打开")
     }
+    const controls = page.locator(
+      '[data-window="about"] [data-close-window]',
+    )
+    if ((await controls.count()) !== 3) {
+      failures.push("/: About 窗口没有显示红黄绿三个控制按钮")
+    }
+    await controls.nth(1).click()
+    await page.waitForTimeout(300)
+    if (
+      await page
+        .locator('[data-window="about"]')
+        .evaluate((element) => element.classList.contains("is-open"))
+    ) {
+      failures.push("/: 黄色窗口按钮没有关闭 About 窗口")
+    }
+    await page.locator('[data-open-window="about"]').click()
+    await page
+      .locator('[data-window="about"] [data-close-window]')
+      .nth(2)
+      .click()
+    await page.waitForTimeout(300)
+    if (
+      await page
+        .locator('[data-window="about"]')
+        .evaluate((element) => element.classList.contains("is-open"))
+    ) {
+      failures.push("/: 绿色窗口按钮没有关闭 About 窗口")
+    }
     await page.keyboard.press("Escape")
     await page.locator('[data-open-window="notes"]').click()
     if (!(await page.locator('[data-window="notes"]').isVisible())) {

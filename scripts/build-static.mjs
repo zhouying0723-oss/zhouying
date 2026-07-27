@@ -189,7 +189,11 @@ ${dockIcon({
 
   <section class="window" data-window="about" role="dialog" aria-label="About Me">
     <header class="window-bar">
-      <button class="window-close" aria-label="Close"></button>
+      <div class="window-controls" aria-label="Window controls">
+        <button class="window-control close" data-close-window aria-label="Close"></button>
+        <button class="window-control minimize" data-close-window aria-label="Minimize and close"></button>
+        <button class="window-control zoom" data-close-window aria-label="Zoom and close"></button>
+      </div>
       <span class="window-title">About Me</span>
     </header>
     <div class="window-content">
@@ -201,7 +205,11 @@ ${dockIcon({
 
   <section class="window" data-window="notes" role="dialog" aria-label="Notes">
     <header class="window-bar">
-      <button class="window-close" aria-label="Close"></button>
+      <div class="window-controls" aria-label="Window controls">
+        <button class="window-control close" data-close-window aria-label="Close"></button>
+        <button class="window-control minimize" data-close-window aria-label="Minimize and close"></button>
+        <button class="window-control zoom" data-close-window aria-label="Zoom and close"></button>
+      </div>
       <span class="window-title">Notes</span>
     </header>
     <div class="window-content note-lines">

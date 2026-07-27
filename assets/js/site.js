@@ -18,7 +18,7 @@ document.querySelectorAll("[data-open-window]").forEach((button) => {
   button.addEventListener("click", () => openWindow(button.dataset.openWindow))
 })
 
-document.querySelectorAll(".window-close").forEach((button) => {
+document.querySelectorAll("[data-close-window]").forEach((button) => {
   button.addEventListener("click", () => {
     button.closest(".window")?.classList.remove("is-open")
   })
