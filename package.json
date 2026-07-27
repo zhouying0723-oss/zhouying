@@ -1,0 +1,12 @@
+{
+  "name": "personal-website-static",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Framer 站点的可自托管静态版本",
+  "scripts": {
+    "analyze": "node scripts/analyze-site.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.55.0"
+  }
+}
