@@ -115,11 +115,32 @@ sudo systemctl reload nginx
 `/etc/nginx/conf.d/zhouying.cn.conf`。证书路径为
 `/etc/letsencrypt/live/zhouying.cn/`。
 
+### 访问计数器
+
+首页通过同源 `POST /api/visit` 记录访问次数。计数服务使用 Python 标准库和
+SQLite，数据库保存在 `/var/lib/zhouying-counter/visits.sqlite3`，服务重启后数据仍会保留。
+
+服务器端文件：
+
+- `server/visit_counter.py` → `/opt/zhouying-counter/visit_counter.py`
+- `deploy/zhouying-counter.service` → `/etc/systemd/system/zhouying-counter.service`
+- `deploy/zhouying.cn.conf` → `/etc/nginx/conf.d/zhouying.cn.conf`
+
+更新后执行：
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now zhouying-counter.service
+sudo nginx -t
+sudo nginx -s reload
+```
+
 ## 目录说明
 
 ```text
 assets/       本地图片、字体、CSS、JavaScript 和来源清单
 works/        6 个本地作品详情页
+server/       访问计数等轻量服务器端程序
 scripts/      动态分析、资源下载、静态生成和自动验收工具
 analysis/     人工分析报告；原始抓取和截图由脚本生成但不提交
 index.html    静态首页

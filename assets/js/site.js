@@ -163,3 +163,25 @@ const revealObserver = new IntersectionObserver(
 document
   .querySelectorAll(".gallery img, .next-project")
   .forEach((element) => revealObserver.observe(element))
+
+const visitCount = document.querySelector("[data-visit-count]")
+
+if (visitCount) {
+  fetch("/api/visit", {
+    method: "POST",
+    headers: { Accept: "application/json" },
+    cache: "no-store",
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error(`Visit counter returned ${response.status}`)
+      return response.json()
+    })
+    .then(({ count }) => {
+      visitCount.textContent = String(count).padStart(6, "0")
+      visitCount.closest(".visitor-counter")?.classList.add("is-counted")
+    })
+    .catch(() => {
+      visitCount.textContent = "OFFLINE"
+      visitCount.closest(".visitor-counter")?.classList.add("is-offline")
+    })
+}
