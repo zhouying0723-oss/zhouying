@@ -427,6 +427,7 @@ button {
 .journal-layout {
   display: grid;
   grid-template-columns: minmax(220px, 0.72fr) minmax(360px, 1.28fr);
+  height: 390px;
   min-height: 390px;
   padding: 0;
 }
@@ -536,6 +537,9 @@ button {
   background:
     linear-gradient(90deg, transparent 31px, rgb(240 153 185 / 0.28) 32px, transparent 33px),
     repeating-linear-gradient(#fffdfb 0 31px, #ddd8ec 31px 32px);
+  overflow-y: auto;
+  scrollbar-color: #cab9eb transparent;
+  scrollbar-width: thin;
 }
 
 .journal-entry {
@@ -761,6 +765,7 @@ button {
 
   .journal-layout {
     display: block;
+    height: auto;
     max-height: calc(100svh - 145px);
     min-height: 0;
     overflow-y: auto;
@@ -805,6 +810,10 @@ button {
 
   .journal-entry {
     padding: 28px 24px 28px 42px;
+  }
+
+  .journal-pages {
+    overflow: visible;
   }
 
   .work-shell {
