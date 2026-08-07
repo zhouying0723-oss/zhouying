@@ -9,7 +9,7 @@ const routes = [
   "/works/elan-brut/",
   "/works/la-ou-dort-l-eau/",
   "/works/les-silences-miroirs/",
-  "/works/lisiere/",
+  "/works/textbuddy/",
   "/works/revolte-douce/",
 ]
 

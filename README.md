@@ -14,7 +14,7 @@ CSS 和 JavaScript 均已保存到本地，不依赖 Framer 编辑器、统计�
 - `/works/elan-brut/`
 - `/works/la-ou-dort-l-eau/`
 - `/works/les-silences-miroirs/`
-- `/works/lisiere/`
+- `/works/textbuddy/`
 - `/works/revolte-douce/`
 
 原站中发现的 6 个内部页面均已下载并转换，没有暂时无法下载的内部页面。
