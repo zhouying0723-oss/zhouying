@@ -461,24 +461,24 @@ button {
 @keyframes diary-bubble-rise {
   0% {
     opacity: 0;
-    transform: translate3d(0, 36px, 0) scale(0.72);
+    transform: translate3d(0, 30px, 0) scale(0.65);
   }
 
-  14% {
-    opacity: 0.72;
+  8% {
+    opacity: var(--opacity);
   }
 
-  52% {
-    transform: translate3d(var(--drift), -150px, 0) scale(1);
+  45% {
+    transform: translate3d(var(--drift), -175px, 0) scale(0.92);
   }
 
-  86% {
-    opacity: 0.58;
+  82% {
+    opacity: var(--opacity);
   }
 
   100% {
     opacity: 0;
-    transform: translate3d(calc(var(--drift) * -0.45), -365px, 0) scale(1.12);
+    transform: translate3d(calc(var(--drift) * -0.35), -430px, 0) scale(1.06);
   }
 }
 
@@ -491,14 +491,14 @@ button {
 }
 
 .journal-bubbles i {
-  animation: diary-bubble-rise var(--duration) ease-in-out var(--delay) infinite;
+  animation: diary-bubble-rise var(--duration) linear var(--delay) infinite;
   background:
     radial-gradient(circle at 30% 24%, rgb(255 255 255 / 0.94) 0 7%, transparent 9%),
     radial-gradient(circle at 64% 72%, rgb(255 163 231 / 0.32), transparent 58%),
     rgb(202 248 255 / 0.24);
   border: 1px solid rgb(255 255 255 / 0.76);
   border-radius: 50%;
-  bottom: -58px;
+  bottom: -46px;
   box-shadow:
     inset -3px -4px 9px rgb(121 95 224 / 0.12),
     0 4px 12px rgb(83 58 144 / 0.1);
@@ -509,13 +509,18 @@ button {
   width: var(--size);
 }
 
-.journal-bubbles i:nth-child(1) { --delay: -1s; --drift: 16px; --duration: 8s; --left: 8%; --size: 24px; }
-.journal-bubbles i:nth-child(2) { --delay: -5.4s; --drift: -18px; --duration: 10s; --left: 28%; --size: 42px; }
-.journal-bubbles i:nth-child(3) { --delay: -3s; --drift: 22px; --duration: 9s; --left: 55%; --size: 18px; }
-.journal-bubbles i:nth-child(4) { --delay: -7.2s; --drift: -12px; --duration: 11s; --left: 76%; --size: 31px; }
-.journal-bubbles i:nth-child(5) { --delay: -9s; --drift: 14px; --duration: 12s; --left: 16%; --size: 14px; }
-.journal-bubbles i:nth-child(6) { --delay: -2.2s; --drift: -24px; --duration: 9.5s; --left: 64%; --size: 50px; }
-.journal-bubbles i:nth-child(7) { --delay: -6.5s; --drift: 12px; --duration: 10.5s; --left: 42%; --size: 28px; }
+.journal-bubbles i:nth-child(1) { --delay: -0.2s; --drift: 8px; --duration: 4.4s; --left: 7%; --opacity: 0.64; --size: 12px; }
+.journal-bubbles i:nth-child(2) { --delay: -2.8s; --drift: -12px; --duration: 5.2s; --left: 18%; --opacity: 0.72; --size: 21px; }
+.journal-bubbles i:nth-child(3) { --delay: -1.4s; --drift: 10px; --duration: 4.8s; --left: 31%; --opacity: 0.58; --size: 9px; }
+.journal-bubbles i:nth-child(4) { --delay: -4.1s; --drift: -9px; --duration: 5.7s; --left: 43%; --opacity: 0.68; --size: 17px; }
+.journal-bubbles i:nth-child(5) { --delay: -0.9s; --drift: 14px; --duration: 5s; --left: 57%; --opacity: 0.76; --size: 25px; }
+.journal-bubbles i:nth-child(6) { --delay: -3.5s; --drift: -7px; --duration: 4.6s; --left: 72%; --opacity: 0.56; --size: 11px; }
+.journal-bubbles i:nth-child(7) { --delay: -2s; --drift: 11px; --duration: 5.5s; --left: 84%; --opacity: 0.7; --size: 19px; }
+.journal-bubbles i:nth-child(8) { --delay: -4.7s; --drift: -14px; --duration: 6.1s; --left: 12%; --opacity: 0.62; --size: 29px; }
+.journal-bubbles i:nth-child(9) { --delay: -1.8s; --drift: 7px; --duration: 4.2s; --left: 37%; --opacity: 0.78; --size: 14px; }
+.journal-bubbles i:nth-child(10) { --delay: -5.3s; --drift: -10px; --duration: 6.4s; --left: 65%; --opacity: 0.6; --size: 23px; }
+.journal-bubbles i:nth-child(11) { --delay: -3.1s; --drift: 13px; --duration: 5.8s; --left: 91%; --opacity: 0.66; --size: 15px; }
+.journal-bubbles i:nth-child(12) { --delay: -0.6s; --drift: -8px; --duration: 4.9s; --left: 49%; --opacity: 0.74; --size: 8px; }
 
 .journal-list {
   display: grid;
@@ -525,7 +530,7 @@ button {
 }
 
 .journal-list-item {
-  background: rgb(255 255 255 / 0.28);
+  background: #e7dcfb;
   border: 1px solid transparent;
   border-radius: 13px;
   color: #3f2b56;
@@ -539,13 +544,13 @@ button {
 
 .journal-list-item:hover,
 .journal-list-item:focus-visible {
-  background: rgb(255 255 255 / 0.48);
+  background: #eee7fd;
   outline: none;
   transform: translateX(3px);
 }
 
 .journal-list-item.is-active {
-  background: rgb(255 255 255 / 0.68);
+  background: #f8f5ff;
   border-color: rgb(255 255 255 / 0.9);
   box-shadow: 0 8px 20px rgb(96 53 145 / 0.13);
 }
