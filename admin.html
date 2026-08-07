@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>留言审核 · Zhou Ying</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon-y2k.png">
+  <link rel="stylesheet" href="assets/css/admin.css?v=20260807-1">
+</head>
+<body>
+  <main class="admin-shell">
+    <header>
+      <div>
+        <p class="eyebrow">GUESTBOOK ADMIN</p>
+        <h1>留言审核</h1>
+      </div>
+      <button type="button" data-logout hidden>退出登录</button>
+    </header>
+
+    <section class="login-card" data-login>
+      <form data-login-form>
+        <label for="password">审核密码</label>
+        <div class="login-row">
+          <input id="password" name="password" type="password" required autocomplete="current-password" autofocus>
+          <button type="submit">进入后台</button>
+        </div>
+        <p data-login-status>密码仅保存在当前浏览器标签页中。</p>
+      </form>
+    </section>
+
+    <section class="message-panel" data-panel hidden>
+      <nav class="filters" aria-label="筛选留言">
+        <button class="is-active" type="button" data-filter="pending">待审核</button>
+        <button type="button" data-filter="approved">已通过</button>
+        <button type="button" data-filter="rejected">已拒绝</button>
+        <button type="button" data-filter="all">全部</button>
+      </nav>
+      <div class="admin-messages" data-admin-messages></div>
+    </section>
+  </main>
+  <script src="assets/js/admin.js?v=20260807-1" defer></script>
+</body>
+</html>

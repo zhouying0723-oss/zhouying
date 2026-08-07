@@ -8,6 +8,7 @@ User=nobody
 Group=nobody
 StateDirectory=zhouying-counter
 Environment=VISIT_COUNTER_DB=/var/lib/zhouying-counter/visits.sqlite3
+EnvironmentFile=-/etc/zhouying-counter.env
 ExecStart=/usr/bin/python3 /opt/zhouying-counter/visit_counter.py
 Restart=on-failure
 RestartSec=2

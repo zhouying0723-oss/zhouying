@@ -204,3 +204,86 @@ document.querySelectorAll("[data-journal-target]").forEach((tab) => {
     })
   })
 })
+
+const guestbookMessages = document.querySelector("[data-guestbook-messages]")
+
+const formatMessageDate = (value) => {
+  const date = new Date(value)
+  return Number.isNaN(date.getTime())
+    ? ""
+    : new Intl.DateTimeFormat("zh-CN", {
+        timeZone: "Asia/Shanghai",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).format(date)
+}
+
+const renderGuestbook = (messages) => {
+  if (!guestbookMessages) return
+  guestbookMessages.replaceChildren()
+  if (!messages.length) {
+    const empty = document.createElement("p")
+    empty.className = "guestbook-empty"
+    empty.textContent = "还没有公开留言，来做第一个留下脚印的人吧 ✦"
+    guestbookMessages.append(empty)
+    return
+  }
+
+  messages.forEach((message) => {
+    const card = document.createElement("article")
+    card.className = "guestbook-message"
+    const header = document.createElement("header")
+    const name = document.createElement("strong")
+    const time = document.createElement("time")
+    const content = document.createElement("p")
+    name.textContent = message.name
+    time.dateTime = message.createdAt
+    time.textContent = formatMessageDate(message.createdAt)
+    content.textContent = message.content
+    header.append(name, time)
+    card.append(header, content)
+    guestbookMessages.append(card)
+  })
+}
+
+const loadGuestbook = () => {
+  if (!guestbookMessages) return
+  fetch("/api/messages", { headers: { Accept: "application/json" }, cache: "no-store" })
+    .then((response) => {
+      if (!response.ok) throw new Error(`Guestbook returned ${response.status}`)
+      return response.json()
+    })
+    .then(({ messages }) => renderGuestbook(messages))
+    .catch(() => {
+      guestbookMessages.innerHTML = '<p class="guestbook-empty">留言簿暂时没有打开，请稍后再试。</p>'
+    })
+}
+
+loadGuestbook()
+
+document.querySelector("[data-guestbook-form]")?.addEventListener("submit", async (event) => {
+  event.preventDefault()
+  const form = event.currentTarget
+  const button = form.querySelector('button[type="submit"]')
+  const status = form.querySelector("[data-guestbook-status]")
+  const data = Object.fromEntries(new FormData(form))
+  button.disabled = true
+  status.textContent = "正在送出……"
+
+  try {
+    const response = await fetch("/api/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(data),
+    })
+    const result = await response.json()
+    if (!response.ok) throw new Error(result.message)
+    form.reset()
+    status.textContent = result.message
+  } catch (error) {
+    status.textContent = error.message || "提交失败，请稍后再试。"
+  } finally {
+    button.disabled = false
+  }
+})
