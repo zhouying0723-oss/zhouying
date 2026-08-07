@@ -28,13 +28,20 @@
 }
 
 html {
+  background: #111;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
   scroll-behavior: smooth;
 }
 
 body {
+  height: 100%;
   margin: 0;
   color: var(--ink);
-  background: #fff;
+  background: #111;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 a {
@@ -48,12 +55,14 @@ button {
 }
 
 .desktop {
-  min-height: 100svh;
+  height: 100vh;
+  height: 100dvh;
+  inset: 0;
   overflow: hidden;
   background: #111 url("../images/sNRFbmfoDZyuNun7Qap6BEwpK7o.jpg") center / cover
     no-repeat;
   color: white;
-  position: relative;
+  position: fixed;
   isolation: isolate;
 }
 
@@ -730,7 +739,8 @@ button {
 
 @media (max-width: 720px) {
   .desktop {
-    height: 100svh;
+    height: 100vh;
+    height: 100dvh;
     min-height: 0;
     overflow: hidden;
   }
