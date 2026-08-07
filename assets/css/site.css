@@ -534,16 +534,18 @@ button {
 }
 
 .journal-pages {
-  background:
-    linear-gradient(90deg, transparent 31px, rgb(240 153 185 / 0.28) 32px, transparent 33px),
-    repeating-linear-gradient(#fffdfb 0 31px, #ddd8ec 31px 32px);
+  background: #fffdfb;
   overflow-y: auto;
   scrollbar-color: #cab9eb transparent;
   scrollbar-width: thin;
 }
 
 .journal-entry {
+  background:
+    linear-gradient(90deg, transparent 31px, rgb(240 153 185 / 0.28) 32px, transparent 33px),
+    repeating-linear-gradient(#fffdfb 0 31px, #ddd8ec 31px 32px);
   display: none;
+  min-height: 100%;
   padding: 34px 38px 34px 54px;
 }
 
