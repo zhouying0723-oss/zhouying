@@ -551,8 +551,12 @@ button {
   color: #4d4658;
   font-family: "Songti SC", "STSong", serif;
   font-size: 15px;
-  line-height: 2.12;
-  margin: 0 0 16px;
+  line-height: 32px;
+  margin: 0 0 32px;
+}
+
+.journal-entry p:last-child {
+  margin-bottom: 0;
 }
 
 .work-page {
