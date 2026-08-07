@@ -185,3 +185,22 @@ if (visitCount) {
       visitCount.closest(".visitor-counter")?.classList.add("is-offline")
     })
 }
+
+document.querySelectorAll("[data-journal-target]").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const journal = tab.closest(".journal-layout")
+    if (!journal) return
+
+    journal.querySelectorAll("[data-journal-target]").forEach((item) => {
+      const isActive = item === tab
+      item.classList.toggle("is-active", isActive)
+      item.setAttribute("aria-selected", String(isActive))
+    })
+
+    journal.querySelectorAll(".journal-entry").forEach((entry) => {
+      const isActive = entry.id === tab.dataset.journalTarget
+      entry.classList.toggle("is-active", isActive)
+      entry.hidden = !isActive
+    })
+  })
+})

@@ -6,7 +6,7 @@
   <meta name="description" content="A macOS-inspired creative portfolio.">
   <title>MakOS — Creative Portfolio</title>
   <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon-y2k.png">
-  <link rel="stylesheet" href="assets/css/site.css?v=20260807-journal">
+  <link rel="stylesheet" href="assets/css/site.css?v=20260807-journal2">
 </head>
 <body>
 <main class="desktop">
@@ -76,9 +76,9 @@
         <span class="dock-label">About Me</span>
       </button>
 
-      <button class="dock-item " data-open-window="notes" aria-label="Notes">
-        <img src="assets/images/notes-journal.png" alt="">
-        <span class="dock-label">Notes</span>
+      <button class="dock-item " data-open-window="notes" aria-label="Diary">
+        <img src="assets/images/diary-journal.png" alt="">
+        <span class="dock-label">Diary</span>
       </button>
 
       <button class="dock-item dock-social instagram" onclick="window.open('https://www.instagram.com/', '_blank', 'noopener')" aria-label="Instagram">
@@ -117,30 +117,45 @@
     </div>
   </section>
 
-  <section class="window journal-window" data-window="notes" role="dialog" aria-label="Notes">
+  <section class="window journal-window" data-window="notes" role="dialog" aria-label="Diary">
     <header class="window-bar">
       <div class="window-controls" aria-label="Window controls">
         <button class="window-control close" data-close-window aria-label="Close"></button>
         <button class="window-control minimize" data-close-window aria-label="Minimize and close"></button>
         <button class="window-control zoom" data-close-window aria-label="Zoom and close"></button>
       </div>
-      <span class="window-title">Notes</span>
+      <span class="window-title">Diary</span>
     </header>
     <div class="window-content journal-layout">
       <aside class="journal-index">
-        <time datetime="2026-08-07">2026 / 08 / 07</time>
-        <span class="journal-weekday">FRIDAY</span>
-        <h2>夏日晚风</h2>
+        <span class="journal-index-title">DIARY INDEX</span>
+        <div class="journal-list" role="tablist" aria-label="手账目录">
+          <button class="journal-list-item is-active" type="button" role="tab" aria-selected="true" aria-controls="journal-summer-evening" data-journal-target="journal-summer-evening">
+            <time datetime="2026-08-07">08 / 07</time>
+            <strong>夏日晚风</strong>
+          </button>
+          <button class="journal-list-item" type="button" role="tab" aria-selected="false" aria-controls="journal-rainy-weekend" data-journal-target="journal-rainy-weekend">
+            <time datetime="2026-08-02">08 / 02</time>
+            <strong>雨后的周末</strong>
+          </button>
+        </div>
         <span class="journal-sticker" aria-hidden="true">✦</span>
       </aside>
-      <article class="journal-entry">
-        <p>下班以后，北京的天还亮着。路边的树叶被风吹得沙沙响，空气里终于少了一点白天的燥热。</p>
-        <p>最近又试了几个新的 AI 工具。有些功能让人眼前一亮，也有一些还需要耐心磨合。我把值得继续研究的想法随手记了下来，准备周末再慢慢整理。</p>
-        <p>回到家后，翻了翻之前的手账。很多当时觉得普通的小事，隔一段时间再看，反而变得很珍贵。今晚也留下一页，记住这阵难得的晚风。</p>
-      </article>
+      <div class="journal-pages">
+        <article class="journal-entry is-active" id="journal-summer-evening" role="tabpanel">
+          <p>下班以后，北京的天还亮着。路边的树叶被风吹得沙沙响，空气里终于少了一点白天的燥热。</p>
+          <p>最近又试了几个新的 AI 工具。有些功能让人眼前一亮，也有一些还需要耐心磨合。我把值得继续研究的想法随手记了下来，准备周末再慢慢整理。</p>
+          <p>回到家后，翻了翻之前的手账。很多当时觉得普通的小事，隔一段时间再看，反而变得很珍贵。今晚也留下一页，记住这阵难得的晚风。</p>
+        </article>
+        <article class="journal-entry" id="journal-rainy-weekend" role="tabpanel" hidden>
+          <p>早上被雨声叫醒，窗外的楼和树都蒙着一层淡淡的灰。没有急着起床，慢慢喝完一杯咖啡，周末才算真正开始。</p>
+          <p>下午整理了这一周留下的照片和票据，把它们贴进手账。页面并不整齐，但每一张纸片都能让人想起当时的天气和心情。</p>
+          <p>傍晚雨停了，出门走了一小圈。潮湿的空气里有泥土和树叶的味道，路灯也比平时亮一些。平凡的一天，因为被记录下来，好像就有了自己的形状。</p>
+        </article>
+      </div>
     </div>
   </section>
 </main>
-  <script src="assets/js/site.js?v=20260807-journal" defer></script>
+  <script src="assets/js/site.js?v=20260807-journal2" defer></script>
 </body>
 </html>

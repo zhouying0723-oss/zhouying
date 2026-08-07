@@ -457,30 +457,62 @@ button {
   width: 130px;
 }
 
-.journal-index time {
+.journal-index-title {
   color: #684c82;
   font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
-  font-size: 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  position: relative;
+  z-index: 1;
+}
+
+.journal-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.journal-list-item {
+  background: rgb(255 255 255 / 0.28);
+  border: 1px solid transparent;
+  border-radius: 13px;
+  color: #3f2b56;
+  cursor: pointer;
+  display: grid;
+  gap: 5px;
+  padding: 12px 14px;
+  text-align: left;
+  transition: 160ms ease;
+}
+
+.journal-list-item:hover,
+.journal-list-item:focus-visible {
+  background: rgb(255 255 255 / 0.48);
+  outline: none;
+  transform: translateX(3px);
+}
+
+.journal-list-item.is-active {
+  background: rgb(255 255 255 / 0.68);
+  border-color: rgb(255 255 255 / 0.9);
+  box-shadow: 0 8px 20px rgb(96 53 145 / 0.13);
+}
+
+.journal-list-item time {
+  color: #80639c;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
 
-.journal-weekday {
-  color: rgb(104 76 130 / 0.62);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  margin-top: 7px;
-}
-
-.journal-index h2 {
-  color: #3f2b56;
+.journal-list-item strong {
   font-family: "Songti SC", "STSong", serif;
-  font-size: 34px;
-  line-height: 1.2;
-  margin: 54px 0 0;
-  position: relative;
-  z-index: 1;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .journal-sticker {
@@ -494,17 +526,25 @@ button {
   font-size: 24px;
   height: 52px;
   justify-content: center;
-  margin-top: 35px;
+  margin-top: auto;
   text-shadow: 0 2px 8px #7d4bd0;
   transform: rotate(-8deg);
   width: 52px;
 }
 
-.journal-entry {
+.journal-pages {
   background:
     linear-gradient(90deg, transparent 31px, rgb(240 153 185 / 0.28) 32px, transparent 33px),
     repeating-linear-gradient(#fffdfb 0 31px, #ddd8ec 31px 32px);
+}
+
+.journal-entry {
+  display: none;
   padding: 34px 38px 34px 54px;
+}
+
+.journal-entry.is-active {
+  display: block;
 }
 
 .journal-entry p {
@@ -726,22 +766,37 @@ button {
   .journal-index {
     border-bottom: 1px solid rgb(118 77 160 / 0.18);
     border-right: 0;
-    min-height: 165px;
-    padding: 24px;
+    min-height: 190px;
+    padding: 20px;
   }
 
-  .journal-index h2 {
-    font-size: 28px;
-    margin-top: 24px;
+  .journal-list {
+    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 16px;
+    padding-right: 48px;
+  }
+
+  .journal-list-item {
+    padding: 10px;
+  }
+
+  .journal-list-item:hover,
+  .journal-list-item:focus-visible {
+    transform: translateY(-2px);
+  }
+
+  .journal-list-item strong {
+    font-size: 16px;
   }
 
   .journal-sticker {
-    height: 44px;
+    height: 40px;
     margin: 0;
     position: absolute;
-    right: 24px;
-    top: 64px;
-    width: 44px;
+    right: 18px;
+    top: 67px;
+    width: 40px;
   }
 
   .journal-entry {
