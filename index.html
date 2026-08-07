@@ -6,7 +6,7 @@
   <meta name="description" content="A macOS-inspired creative portfolio.">
   <title>MakOS — Creative Portfolio</title>
   <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon-y2k.png">
-  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/site.css?v=20260807-journal">
 </head>
 <body>
 <main class="desktop">
@@ -77,7 +77,7 @@
       </button>
 
       <button class="dock-item " data-open-window="notes" aria-label="Notes">
-        <img src="assets/images/4ar8CL6aUtjymV8jTsXrcPzXCM.svg" alt="">
+        <img src="assets/images/notes-journal.png" alt="">
         <span class="dock-label">Notes</span>
       </button>
 
@@ -117,7 +117,7 @@
     </div>
   </section>
 
-  <section class="window" data-window="notes" role="dialog" aria-label="Notes">
+  <section class="window journal-window" data-window="notes" role="dialog" aria-label="Notes">
     <header class="window-bar">
       <div class="window-controls" aria-label="Window controls">
         <button class="window-control close" data-close-window aria-label="Close"></button>
@@ -126,13 +126,21 @@
       </div>
       <span class="window-title">Notes</span>
     </header>
-    <div class="window-content note-lines">
-      <h2>Notes</h2>
-      <p>Selected observations, references and unfinished thoughts.</p>
-      <p>Available for collaborations and thoughtful commissions.</p>
+    <div class="window-content journal-layout">
+      <aside class="journal-index">
+        <time datetime="2026-08-07">2026 / 08 / 07</time>
+        <span class="journal-weekday">FRIDAY</span>
+        <h2>夏日晚风</h2>
+        <span class="journal-sticker" aria-hidden="true">✦</span>
+      </aside>
+      <article class="journal-entry">
+        <p>下班以后，北京的天还亮着。路边的树叶被风吹得沙沙响，空气里终于少了一点白天的燥热。</p>
+        <p>最近又试了几个新的 AI 工具。有些功能让人眼前一亮，也有一些还需要耐心磨合。我把值得继续研究的想法随手记了下来，准备周末再慢慢整理。</p>
+        <p>回到家后，翻了翻之前的手账。很多当时觉得普通的小事，隔一段时间再看，反而变得很珍贵。今晚也留下一页，记住这阵难得的晚风。</p>
+      </article>
     </div>
   </section>
 </main>
-  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/site.js?v=20260807-journal" defer></script>
 </body>
 </html>

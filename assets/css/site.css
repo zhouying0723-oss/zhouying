@@ -419,12 +419,100 @@ button {
   margin: 0 0 14px;
 }
 
-.note-lines {
-  background: repeating-linear-gradient(
-    transparent 0 31px,
-    #e9dca6 31px 32px
-  );
-  min-height: 190px;
+.journal-window {
+  background: rgb(255 250 255 / 0.94);
+  width: 760px;
+}
+
+.journal-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(360px, 1.28fr);
+  min-height: 390px;
+  padding: 0;
+}
+
+.journal-index {
+  background:
+    radial-gradient(circle at 18% 16%, rgb(255 255 255 / 0.95) 0 2px, transparent 3px),
+    linear-gradient(145deg, #fbcff2, #d7d0ff 55%, #bcecff);
+  border-right: 1px solid rgb(118 77 160 / 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 42px 30px;
+  position: relative;
+}
+
+.journal-index::after {
+  border: 1px solid rgb(255 255 255 / 0.7);
+  border-radius: 50%;
+  bottom: -58px;
+  box-shadow:
+    0 0 0 18px rgb(255 255 255 / 0.12),
+    0 0 0 36px rgb(255 255 255 / 0.09);
+  content: "";
+  height: 130px;
+  position: absolute;
+  right: -35px;
+  width: 130px;
+}
+
+.journal-index time {
+  color: #684c82;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.journal-weekday {
+  color: rgb(104 76 130 / 0.62);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  margin-top: 7px;
+}
+
+.journal-index h2 {
+  color: #3f2b56;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 34px;
+  line-height: 1.2;
+  margin: 54px 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.journal-sticker {
+  align-items: center;
+  background: linear-gradient(145deg, #fff, #c7f7ff 48%, #ff9ee8);
+  border: 2px solid rgb(255 255 255 / 0.82);
+  border-radius: 50%;
+  box-shadow: 0 8px 22px rgb(91 48 139 / 0.2);
+  color: #fff;
+  display: flex;
+  font-size: 24px;
+  height: 52px;
+  justify-content: center;
+  margin-top: 35px;
+  text-shadow: 0 2px 8px #7d4bd0;
+  transform: rotate(-8deg);
+  width: 52px;
+}
+
+.journal-entry {
+  background:
+    linear-gradient(90deg, transparent 31px, rgb(240 153 185 / 0.28) 32px, transparent 33px),
+    repeating-linear-gradient(#fffdfb 0 31px, #ddd8ec 31px 32px);
+  padding: 34px 38px 34px 54px;
+}
+
+.journal-entry p {
+  color: #4d4658;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 15px;
+  line-height: 2.12;
+  margin: 0 0 16px;
 }
 
 .work-page {
@@ -556,8 +644,9 @@ button {
 
 @media (max-width: 720px) {
   .desktop {
-    min-height: 100svh;
-    overflow-y: auto;
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .project-grid {
@@ -565,8 +654,9 @@ button {
     display: grid;
     gap: 27px 14px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    height: auto;
-    min-height: 100svh;
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
     padding: 56px 22px 165px;
   }
 
@@ -619,6 +709,43 @@ button {
 
   .window-content {
     padding: 22px;
+  }
+
+  .journal-window {
+    max-height: calc(100svh - 100px);
+  }
+
+  .journal-layout {
+    display: block;
+    max-height: calc(100svh - 145px);
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  .journal-index {
+    border-bottom: 1px solid rgb(118 77 160 / 0.18);
+    border-right: 0;
+    min-height: 165px;
+    padding: 24px;
+  }
+
+  .journal-index h2 {
+    font-size: 28px;
+    margin-top: 24px;
+  }
+
+  .journal-sticker {
+    height: 44px;
+    margin: 0;
+    position: absolute;
+    right: 24px;
+    top: 64px;
+    width: 44px;
+  }
+
+  .journal-entry {
+    padding: 28px 24px 28px 42px;
   }
 
   .work-shell {
