@@ -517,20 +517,9 @@ button {
 .journal-bubbles i:nth-child(6) { --delay: -2.2s; --drift: -24px; --duration: 9.5s; --left: 64%; --size: 50px; }
 .journal-bubbles i:nth-child(7) { --delay: -6.5s; --drift: 12px; --duration: 10.5s; --left: 42%; --size: 28px; }
 
-.journal-index-title {
-  color: #684c82;
-  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  position: relative;
-  z-index: 1;
-}
-
 .journal-list {
   display: grid;
   gap: 10px;
-  margin-top: 28px;
   position: relative;
   z-index: 1;
 }
@@ -573,23 +562,6 @@ button {
   font-family: "Songti SC", "STSong", serif;
   font-size: 20px;
   font-weight: 700;
-}
-
-.journal-sticker {
-  align-items: center;
-  background: linear-gradient(145deg, #fff, #c7f7ff 48%, #ff9ee8);
-  border: 2px solid rgb(255 255 255 / 0.82);
-  border-radius: 50%;
-  box-shadow: 0 8px 22px rgb(91 48 139 / 0.2);
-  color: #fff;
-  display: flex;
-  font-size: 24px;
-  height: 52px;
-  justify-content: center;
-  margin-top: auto;
-  text-shadow: 0 2px 8px #7d4bd0;
-  transform: rotate(-8deg);
-  width: 52px;
 }
 
 .journal-pages {
@@ -843,8 +815,6 @@ button {
   .journal-list {
     gap: 8px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 16px;
-    padding-right: 48px;
   }
 
   .journal-list-item {
@@ -858,15 +828,6 @@ button {
 
   .journal-list-item strong {
     font-size: 16px;
-  }
-
-  .journal-sticker {
-    height: 40px;
-    margin: 0;
-    position: absolute;
-    right: 18px;
-    top: 67px;
-    width: 40px;
   }
 
   .journal-entry {
