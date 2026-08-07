@@ -443,7 +443,7 @@ button {
   display: grid;
   gap: 18px;
   grid-template-columns: minmax(230px, 0.82fr) minmax(290px, 1.18fr);
-  height: 430px;
+  height: 480px;
   padding: 24px;
 }
 
