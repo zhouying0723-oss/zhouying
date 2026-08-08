@@ -20,8 +20,8 @@
         <h1>AI 嘴替</h1>
         <p class="work-description">在任意应用里选中一段文字，按下 <kbd>⌘E</kbd>，TextBuddy 会调用 AI 优化表达，并将结果直接替换到原选区。</p>
         <div class="textbuddy-actions">
-          <a class="textbuddy-download" href="../../assets/downloads/TextBuddy-0.1.5-Apple-Silicon.zip" download>
-            下载 TextBuddy 0.1.5
+          <a class="textbuddy-download" href="../../assets/downloads/TextBuddy-0.1.6-Apple-Silicon.zip" download>
+            下载 TextBuddy 0.1.6
           </a>
           <span>Apple Silicon · macOS 14+</span>
         </div>
@@ -73,20 +73,21 @@
           <li>按欢迎向导进入“系统设置 → 隐私与安全性 → 辅助功能”，打开 TextBuddy 的权限；授权后重新启动应用。</li>
           <li>在任意应用中选中文字，按 <kbd>⌘E</kbd> 即可改写并替换原文。默认 Agnes AI 可直接使用，火山方舟 API Key 为可选配置。</li>
         </ol>
-        <p class="textbuddy-note">如果系统仍提示无法验证开发者，请回到“应用程序”文件夹，再次使用“右键 → 打开”。当前版本未签名、未公证，仅建议用于个人体验。</p>
+        <p class="textbuddy-note">如果系统仍提示无法验证开发者或“应用已损坏”，请回到“应用程序”文件夹，再次使用“右键 → 打开”；若仍被拦截，可在终端执行 <code>xattr -dr com.apple.quarantine /Applications/TextBuddy.app</code> 后再打开。当前版本未签名、未公证，仅建议用于个人体验。</p>
       </section>
 
       <section class="textbuddy-install textbuddy-changelog">
         <p class="textbuddy-kicker">WHAT'S NEW</p>
         <h2>更新日志</h2>
         <div class="textbuddy-release-meta">
-          <strong>TextBuddy 0.1.5</strong>
+          <strong>TextBuddy 0.1.6</strong>
           <time datetime="2026-08-08">更新于 2026 年 8 月 8 日</time>
         </div>
         <ul>
           <li>接入 Agnes AI 默认服务，不填写 API Key 也能直接使用。</li>
           <li>通过 Cloudflare Worker 安全转发请求，不在应用中保存 Agnes API Key。</li>
           <li>继续支持火山方舟 API Key 和常用模型配置，并优先使用个人配置。</li>
+          <li>修复内测安装包的资源签名问题，避免 macOS 误报“应用已损坏”。</li>
           <li>采用新的光标与银色星芒 Y2K 图标。</li>
           <li>快捷键为 <kbd>⌘E</kbd>，支持任意可复制、粘贴的文字区域。</li>
         </ul>
