@@ -6,7 +6,7 @@
   <meta name="description" content="TextBuddy · AI 嘴替：选中文字，按下 Command + E，让 AI 直接替换原选区。">
   <title>AI 嘴替 · TextBuddy — 周颖的小世界</title>
   <link rel="icon" href="../../assets/images/textbuddy-y2k-icon-v2.png">
-  <link rel="stylesheet" href="../../assets/css/site.css?v=20260807-textbuddy2">
+  <link rel="stylesheet" href="../../assets/css/site.css?v=20260808-textbuddy3">
 </head>
 <body>
 <main class="work-page textbuddy-page">
@@ -62,15 +62,36 @@
       </div>
     </section>
 
-    <section class="textbuddy-install">
-      <h2>安装方法</h2>
-      <ol>
-        <li>下载并解压 ZIP，将 TextBuddy.app 拖入“应用程序”。</li>
-        <li>首次启动时右键 TextBuddy，选择“打开”。</li>
-        <li>按欢迎向导授予辅助功能权限即可使用；火山方舟 API Key 为可选配置。</li>
-      </ol>
-      <p class="textbuddy-note">当前为未签名、未公证的内测版，仅建议用于个人体验。</p>
-    </section>
+    <div class="textbuddy-details">
+      <section class="textbuddy-install">
+        <p class="textbuddy-kicker">GET STARTED</p>
+        <h2>安装与首次使用</h2>
+        <ol>
+          <li>点击上方按钮下载 ZIP，双击下载的文件完成解压。</li>
+          <li>把 <strong>TextBuddy.app</strong> 拖入 Finder 的“应用程序”文件夹。</li>
+          <li>由于目前是未签名内测版，请不要直接双击；在“应用程序”中右键 TextBuddy，选择“打开”，再在提示框中点击“打开”。</li>
+          <li>按欢迎向导进入“系统设置 → 隐私与安全性 → 辅助功能”，打开 TextBuddy 的权限；授权后重新启动应用。</li>
+          <li>在任意应用中选中文字，按 <kbd>⌘E</kbd> 即可改写并替换原文。默认 Agnes AI 可直接使用，火山方舟 API Key 为可选配置。</li>
+        </ol>
+        <p class="textbuddy-note">如果系统仍提示无法验证开发者，请回到“应用程序”文件夹，再次使用“右键 → 打开”。当前版本未签名、未公证，仅建议用于个人体验。</p>
+      </section>
+
+      <section class="textbuddy-install textbuddy-changelog">
+        <p class="textbuddy-kicker">WHAT'S NEW</p>
+        <h2>更新日志</h2>
+        <div class="textbuddy-release-meta">
+          <strong>TextBuddy 0.1.5</strong>
+          <time datetime="2026-08-08">更新于 2026 年 8 月 8 日</time>
+        </div>
+        <ul>
+          <li>接入 Agnes AI 默认服务，不填写 API Key 也能直接使用。</li>
+          <li>通过 Cloudflare Worker 安全转发请求，不在应用中保存 Agnes API Key。</li>
+          <li>继续支持火山方舟 API Key 和常用模型配置，并优先使用个人配置。</li>
+          <li>采用新的光标与银色星芒 Y2K 图标。</li>
+          <li>快捷键为 <kbd>⌘E</kbd>，支持任意可复制、粘贴的文字区域。</li>
+        </ul>
+      </section>
+    </div>
   </article>
 </main>
   <script src="../../assets/js/site.js?v=20260807-guestbook1" defer></script>

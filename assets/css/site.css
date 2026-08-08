@@ -1032,6 +1032,12 @@ button {
   padding: 28px 32px;
 }
 
+.textbuddy-details {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
+}
+
 .textbuddy-install h2 {
   font-size: 25px;
   margin: 0 0 16px;
@@ -1040,6 +1046,37 @@ button {
 .textbuddy-install ol {
   margin: 0;
   padding-left: 20px;
+}
+
+.textbuddy-install li + li {
+  margin-top: 10px;
+}
+
+.textbuddy-install strong {
+  color: #584761;
+}
+
+.textbuddy-changelog ul {
+  margin: 20px 0 0;
+  padding-left: 20px;
+}
+
+.textbuddy-release-meta {
+  align-items: flex-start;
+  border-bottom: 1px solid rgb(105 74 132 / 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 16px;
+}
+
+.textbuddy-release-meta strong {
+  font-size: 16px;
+}
+
+.textbuddy-release-meta time {
+  color: #9985a2;
+  font-size: 12px;
 }
 
 .textbuddy-note {
@@ -1221,6 +1258,10 @@ button {
   .textbuddy-example-arrow {
     min-height: 28px;
     transform: rotate(90deg);
+  }
+
+  .textbuddy-details {
+    grid-template-columns: 1fr;
   }
 }
 
