@@ -4,6 +4,7 @@ const loginStatus = document.querySelector("[data-login-status]")
 const panel = document.querySelector("[data-panel]")
 const messageList = document.querySelector("[data-admin-messages]")
 const logoutButton = document.querySelector("[data-logout]")
+const pendingCount = document.querySelector("[data-pending-count]")
 let password = sessionStorage.getItem("guestbookAdminPassword") || ""
 let messages = []
 let filter = "pending"
@@ -16,6 +17,11 @@ const formatDate = (value) => new Intl.DateTimeFormat("zh-CN", {
 }).format(new Date(value))
 
 const render = () => {
+  const pending = messages.filter((item) => item.status === "pending").length
+  if (pendingCount) {
+    pendingCount.textContent = String(pending)
+    pendingCount.hidden = pending === 0
+  }
   messageList.replaceChildren()
   const visible = filter === "all" ? messages : messages.filter((item) => item.status === filter)
   if (!visible.length) {
